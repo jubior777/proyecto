@@ -7,7 +7,7 @@ function App() {
     <>
       <div>
         <h1>Hello World Gloria</h1>
-        <h1>Este es el sitio de desarrolo</h1>
+        <p>Este es el sitio de desarrolo</p>
       </div>
       
     </>
