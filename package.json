@@ -1,8 +1,20 @@
 {
-  "name": "proyecto",
-  "private": true,
+  "name": "c",
   "version": "0.0.0",
+  "private": true,
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "homepage": "https://github.com/jubior777/proyecto#readme",
+  "bugs": {
+    "url": "https://github.com/jubior777/proyecto/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jubior777/proyecto.git"
+  },
+  "license": "ISC",
+  "author": "",
   "type": "module",
+  "main": "eslint.config.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -18,7 +30,7 @@
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
-    "eslint": "^9.22.0",
+    "eslint": "^9.25.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
