@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
-import Home from '../components/pages/Home'
+import Home from '../components/pages/App'
 import Error404 from '../components/pages/Error404'
 
 const router = createBrowserRouter([
