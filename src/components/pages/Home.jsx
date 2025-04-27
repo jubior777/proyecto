@@ -3,6 +3,7 @@ import MainHeader from '../organisms/MainHeader'
 import './App.css'
 import Home from "./components/pages/Home";
 import Error404 from "./components/pages/Error404";
+import MainHeader from "./components/organisms/MainHeader";
 
 
 function Home() {
