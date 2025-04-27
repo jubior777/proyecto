@@ -1,16 +1,20 @@
 import {API_URL} from '../../constants/env'
 import MainHeader from '../organisms/MainHeader'
+import './App.css'
+import Home from "./components/pages/Home";
+import Error404 from "./components/pages/Error404";
 
-function () {
+
+function Home() {
   return (
     <>
-      <Mainhed />
-      <div>
-        <h1>Hello World Gloria</h1>
-        <p>Este es el sitio de desarrolo</p>
-      </div>
+      <MainHeader /> 
+      <h1>Bienvenido</h1>
+      <p>Explora nuestros productos.</p>
     </>
-  )
+  );
 }
 
-export default Home
+export default Home;
+
+
