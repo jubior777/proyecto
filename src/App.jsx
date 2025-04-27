@@ -17,6 +17,7 @@ export default App;
 function TestTailwind() {
   return (
     <div className="bg-blue-500 text-white p-5 rounded-lg">
+      <h1 class="text-4xl font-bold text-blue-500">¡Tailwind está funcionando! 🚀</h1>
       ¡TailwindCSS está funcionando!
     </div>
   );
