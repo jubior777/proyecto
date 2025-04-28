@@ -1,28 +1,24 @@
+/** @type {} */
+const colors = require("tailwindcss/colors");
+
 module.exports = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx}",
-    "./src/components/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{html,js,jsx,ts,tsx}"
   ],
   theme: {
-    extend: { // Agregamos extend aquí
-      spancing: {
-        5: '1.25rem',
+    extend: {
+      maxWidth: {
+        200: "78rem",
       },
-      fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
-      },
-      colors: {
-        primary: { 
-          DEFAULT: '#2563EB',
-          600: '#2563EB',
-          700: '#1D4ED8',
-        },
-        secondary: { /* ... colores personalizados ... */ },
-      },
-      ringOffsetColor: {
-        DEFAULT: '#ffffff',
+      width: {
+        20: '6rem'
       },
     },
   },
-  plugins: [],
+  plugins: {
+    "@tailwindcss/postcss": {},
+    autoprefixer: {},
+  },
 };
+
+
