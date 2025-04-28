@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: { // Agregamos extend aquí
+      spancing: {
+        5: '1.25rem',
+      },
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
       },
