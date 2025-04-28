@@ -1,13 +1,25 @@
 module.exports = {
-  purge: [
-    './src/**/*.{js,jsx,ts,tsx}',
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx}",
+    "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
-  },
-  variants: {
-    extend: {},
+    extend: { // Agregamos extend aquí
+      fontFamily: {
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+      },
+      colors: {
+        primary: { 
+          DEFAULT: '#2563EB',
+          600: '#2563EB',
+          700: '#1D4ED8',
+        },
+        secondary: { /* ... colores personalizados ... */ },
+      },
+      ringOffsetColor: {
+        DEFAULT: '#ffffff',
+      },
+    },
   },
   plugins: [],
-}
+};
