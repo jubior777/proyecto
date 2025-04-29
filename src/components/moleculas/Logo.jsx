@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 
 const Logo = () => {
   return (
-    <div className="logo flex">
+    <div className="flex">
       <Link to="/">
        <img
-          src="https://res.cloudinary.com/dqj8v0x2g/image/upload/v1698230984/Logo"
-          alt="Logo artesania blanco"
+          src="img/logo.png" alt="Artesania"
         />
       </Link>
     </div> 
@@ -15,4 +14,5 @@ const Logo = () => {
 }
   
 export default Logo;
+
 
