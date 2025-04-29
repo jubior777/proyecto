@@ -9,5 +9,5 @@
 
 /* Example usage of @apply */
 .menu-item {
-  @apply py-5 px-4 hover:text-white;
+  @apply py-5 px-4 hover:text-sky-100;
 }
