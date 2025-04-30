@@ -1,1 +1,1 @@
-export const API_URL = "https://api-ecommerce.proyecto";
+export const API_URL = import.meta.env.VITE_API_URL; // URL de la API

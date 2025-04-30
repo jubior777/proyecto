@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 
 const Logo = () => {
   return (
-    <div className="flex">
+    <div className="logo flex">
       <Link to="/">
        <img
-          src="img/logo.png" alt="Artesania"
+          src="/trabajo.jpg" class="h-11" 
+          alt="Tailwind Play"
         />
       </Link>
     </div> 
