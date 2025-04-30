@@ -1,5 +1,5 @@
 import React from 'react';
-import { API_URL } from '../constants/env';
+
 
 const Login = () => {
     const handleSubmit = (e) => {
@@ -12,13 +12,13 @@ const Login = () => {
             password: e.target.password.value,
         }
 
-        
-        axios.post('${API_URL}/public/auth/login', data)
-            .then(response => {
-                console.log(response.data); // Maneja la respuesta de la API
+
+        axios.post('${API_URL}')
+            .then(resp => {
+                console.log(resp); // Maneja la respuesta de la API
             })
             .catch(error => {
-                console.error('Error:', error); // Maneja el error de la API
+                console.log(error); // Maneja el error de la API
             });
 
         
