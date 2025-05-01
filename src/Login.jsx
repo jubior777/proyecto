@@ -1,5 +1,4 @@
-import React from 'react';
-import axios from 'axios'; // Importa la biblioteca axios para hacer solicitudes HTTP
+import React from "react";
 
 
 const Login = () => {
@@ -12,16 +11,6 @@ const Login = () => {
             username: e.target.username.value,
             password: e.target.password.value
         }
-
-        axios.post (' ${API_URL}')
-
-       
-
-
-        
-
-        
-    }
 
     return (
         <div className="pt-16 max-w-256 m-auto">
@@ -36,5 +25,3 @@ const Login = () => {
 }
 
 export default Login;
-
-  
