@@ -5,6 +5,7 @@ import Error404 from "../components/Error404";
 import Products from "../components/Products";
 import Home from "../components/templates/Home";
 import Login from "../Login";
+import Register from "../components/templates/Register"; // Importa el componente de registro
 
 
 const router = createBrowserRouter([

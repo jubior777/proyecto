@@ -1,6 +1,6 @@
-export const token = localStorage.getItem(TOKEN_NAME);
+export const token = localStorage.getItem("TOKEN_NAME");
 
-export const setToken = (token) => ocalStorage.setItem(TOKEN_NAME, Token);
+export const setToken = (token) => localStorage.setItem("TOKEN_NAME", Token);
 
-export const deleteToken = () => localStorage.removeItem(TOKEN_NAME);
+export const deleteToken = () => localStorage.removeItem("TOKEN_NAME");
 

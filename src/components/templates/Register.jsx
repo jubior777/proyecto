@@ -2,38 +2,46 @@ import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { API_URL } from "./components/constants/env.js";
-import { setToken } from "./helpers/auth.js";
 import LoginTemplate from "./components/templates/LoginTemplate.jsx";
 
-const Login = () => {
+const Register = () => {
   const nav = useNavigate();
 
   const [error, setError] = useState();
   const handleSubmit = (e) => {
     e.preventDefault(); // Evita el comportamiento por defecto del formulario
-    setError()
     const data = {
       email: e.target.email.value,
       password: e.target.password.value,
+      details: {
+        fullname: e.target.fullname.value,
+      },
     };
 
     axios
-      .post(`${API_URL}/public/Login`, data)
-      .then((resp) => { 
-        setToken(resp.data.token)
-        nav('/')
+      .post(`${API_URL}/public/users`, data)
+      .then(() => { 
+        nav('/login')
       })   
       .catch((err) => {
         setError(err)
+        console.log(err)
       })
   };
 
   return (
-    <LoginTemplate title="Iniciar Sesion">
+    <LoginTemplate title="Registrate">
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <input type="email"  
-            placeholder="Correo electronico"
+          <input type="text"  
+            placeholder="Nombre completo"
+            name="fullname"  
+            required 
+          />
+        </div>
+        <div className="mb-4">
+          <input type="email" 
+            placeholder="correo electronico"
             name="email" 
             required 
           />
@@ -47,15 +55,15 @@ const Login = () => {
         </div>
         <div className="text-center pt-1 mb-12 pb-1">
           <button className="bg-gradient w-full" type="submit" >
-            Ingresar
+            Crear cuenta
           </button>
           <Link className="text-gray-500" to="/register">
-            ¿Desea registrarse?
+            ¿Ya tienes cuenta? Inicia sesión
           </Link>
         </div>
         {error && (
           <p className="text-center p-2 bg-red-100 text-red-800">
-            {error?.response?.data?.data}
+            {error?.response?.data.errors[0].message}
           </p>
         )}
       </form>
@@ -63,4 +71,4 @@ const Login = () => {
   )
 };
 
-export default Login;
+export default Register;
