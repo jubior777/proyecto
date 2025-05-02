@@ -4,7 +4,7 @@ import App from "../App"; // Importa el componente principal de la aplicación
 import Error404 from "../components/Error404";
 import Products from "../components/Products";
 import Home from "../components/templates/Home";
-import Login from "../components/pages/Login";
+import Login from "../Login";
 
 
 const router = createBrowserRouter([

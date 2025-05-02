@@ -1,27 +1,73 @@
-import React from "react";
-
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { API_URL } from "./components/constants/env.js";
+import LoginTemplate from "./components/templates/LoginTemplate.jsx";
+import { Link } from "react-router-dom";
 
 const Login = () => {
-    const handleSubmit = (e) => {
-        e.preventDefault() // Evita el comportamiento por defecto del formulario
-        alert("Registro exitoso !!") // Muestra una alerta de registro exitoso
-    
-        const data = {
-            email: e.target.email.value,
-            username: e.target.username.value,
-            password: e.target.password.value
-        }
+  const nav = useNavigate();
 
-    return (
-        <div className="pt-16 max-w-256 m-auto">
-            <form onSubmit={handleSubmit}>
-                <input type="email" name="email" placeholder="Correo electronico" required />
-                <input type="nombre" name="username" placeholder="Nombre de usuario" required />
-                <input type="password" name="password" placeholder="Contraseña" required />
-                <button type='submit' className='btn btn-primary'>Ingresar</button>
-            </form>
-        </div> 
-    )
-}
+  const [user, setUser] = useState({
+    email: "",
+    username: "",
+    password: "",
+  });
+
+  const [error, setError] = useState();
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Evita el comportamiento por defecto del formulario
+    const data = {
+      email: e.target.email.value,
+      username: e.target.username.value,
+      password: e.target.password.value,
+    };
+
+    axios
+      .post(`${API_URL}/public/Login`, data)
+      .then((resp) => { 
+        setToken(resp.data.token)
+        nav('/')
+      })   
+      .catch((err) => {
+        setError(err)
+      })
+  };
+
+  return (
+    <LoginTemplate>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-4">
+          <input type="email"  
+            placeholder="Correo electronico"
+            name="email" 
+            required 
+          />
+        </div>
+        <div className="mb-4">
+          <input type="password" 
+            placeholder="Contraseña"
+            name="password" 
+            required 
+          />
+        </div>
+        <div className="text-center pt-1 mb-12 pb-1">
+          <button className="bg-gradient w-full" type="submit" >
+            Ingresar
+          </button>
+          <Link className="text-gray-500" to="/register">
+            ¿Desea registrarse?
+          </Link>
+        </div>
+        {error && (
+          <p className="text-center p-2 bg-red-100 text-red-800">
+            {error?.response?.data?.data}
+          </p>
+        )}
+      </form>
+    </LoginTemplate>
+  )
+};
 
 export default Login;
