@@ -1,5 +1,6 @@
 import React from "react";
-import { API_URL } from "./components/constants/env";
+import { API_URL } from "./constants/env";
+
 
 
 

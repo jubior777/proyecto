@@ -19,7 +19,7 @@ const Register = () => {
     };
 
     axios
-      .post(`${API_URL}/public/users`, data)
+      .post(`${API_URL}/register`, data)
       .then(() => { 
         nav('/login')
       })   

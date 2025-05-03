@@ -32,6 +32,6 @@ const router = createBrowserRouter([
     {
         path: "/Registro",
         element: <Register />,
-    }
+    },
 ])
 export default router; // Exporta el enrutador para usarlo en la aplicación
