@@ -18,7 +18,7 @@ const Login = () => {
     };
 
     axios
-      .post(`${API_URL}/public/Login`, data)
+      .post(`${API_URL}/login`, data)
       .then((resp) => { 
         setToken(resp.data.token)
         nav('/')
