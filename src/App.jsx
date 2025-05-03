@@ -1,5 +1,6 @@
 import React from "react";
-import { API_URL } from "./constants/env";
+import { API_URL } from "./components/constants/env";
+
 
 
 
@@ -19,7 +20,7 @@ export default App;
 function TestTailwind() {
   return (
     <div className="bg-blue-500 text-white p-5 rounded-lg">
-      <h1 class="text-4xl font-bold text-blue-500">¡Tailwind está funcionando! 🚀</h1>
+      <h1 className="text-4xl font-bold text-blue-500">¡Tailwind está funcionando! 🚀</h1>
       ¡TailwindCSS está funcionando!
     </div>
   );
