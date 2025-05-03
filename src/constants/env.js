@@ -1,1 +1,0 @@
-export const API_URL = "https://api-ecommerce.ed.team/api/v1";
