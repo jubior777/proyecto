@@ -1,10 +1,6 @@
 import React from "react";
 import { API_URL } from "./components/constants/env";
 
-
-
-
-
 function App() {
   return (
     <>
