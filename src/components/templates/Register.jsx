@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { API_URL } from "./components/constants/env.js";
-import LoginTemplate from "./components/templates/LoginTemplate.jsx";
+import { API_URL } from "../constants/env.js"
+import LoginTemplate from "../templates/LoginTemplate.jsx"
 
 const Register = () => {
   const nav = useNavigate();
@@ -24,8 +24,9 @@ const Register = () => {
         nav('/login')
       })   
       .catch((err) => {
-        setError(err)
-        console.log(err)
+        const errorMessage = err.response?.data?.errors?.[0] || err.message || "Error desconocido";
+        setError(errorMessage);
+        console.log(err);
       })
   };
 
@@ -63,7 +64,7 @@ const Register = () => {
         </div>
         {error && (
           <p className="text-center p-2 bg-red-100 text-red-800">
-            {error?.response?.data.errors[0].message}
+            {error}
           </p>
         )}
       </form>
