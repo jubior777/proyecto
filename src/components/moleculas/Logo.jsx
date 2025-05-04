@@ -6,7 +6,7 @@ const Logo = () => {
     <div className="logo flex">
       <Link to="/">
        <img
-          src="/trabajo.jpg" class="h-11" 
+          src="/trabajo.jpg" className="h-11" 
           alt="Tailwind Play"
         />
       </Link>
