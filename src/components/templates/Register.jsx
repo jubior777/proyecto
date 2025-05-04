@@ -1,8 +1,9 @@
 import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import LoginTemplate from "../templates/LoginTemplate.jsx"
 import { API_URL } from "../constants/env.js";
+
 
 
 
@@ -21,7 +22,7 @@ const Register = () => {
     };
 
     axios
-      .post(`${API_URL}/register`, data)
+      .post(`${API_URL}/public/register`, data)
       .then(() => { 
         nav('/login')
       })   

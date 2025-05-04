@@ -15,6 +15,11 @@ const MainMenu = () => {
                Productos
             </Link>
           </li>
+          <li className="flex items-center">
+            <a className="menu-item cursor-pointer">
+              Cerrar sesión
+            </a>
+          </li>
       </ul>
     </nav>
   );

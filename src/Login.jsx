@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { API_URL } from "./components/constants/env.js";
-import { setToken } from "./helpers/auth.js";
 import LoginTemplate from "./components/templates/LoginTemplate.jsx";
+import { API_URL } from "./components/constants/env.js";
+
 
 const Login = () => {
   const nav = useNavigate();
@@ -19,13 +19,9 @@ const Login = () => {
 
     axios
       .post(`${API_URL}/public/login`, data)
-      .then((resp) => { 
-        setToken(resp.data.token)
-        nav('/')
-      })   
-      .catch((err) => {
-        setError(err)
-      })
+      .then(resp =>console.log(resp))
+      .catch(err => console.log(error))
+      
   };
 
   return (
