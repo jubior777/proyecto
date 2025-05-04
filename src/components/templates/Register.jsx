@@ -1,11 +1,9 @@
+import React from "react";
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import LoginTemplate from "../templates/LoginTemplate.jsx"
 import { API_URL } from "../constants/env.js";
-
-
-
 
 const Register = () => {
   const nav = useNavigate();
@@ -34,7 +32,7 @@ const Register = () => {
   };
 
   return (
-    <LoginTemplate title="Registrate">
+    <LoginTemplate title="Regístrate">
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <input type="text"  
@@ -45,7 +43,7 @@ const Register = () => {
         </div>
         <div className="mb-4">
           <input type="email" 
-            placeholder="correo electronico"
+            placeholder="Correo electrónico"
             name="email" 
             required 
           />
@@ -61,7 +59,7 @@ const Register = () => {
           <button className="bg-gradient w-full" type="submit" >
             Crear cuenta
           </button>
-          <Link className="text-gray-500" to="/register">
+          <Link className="text-gray-500" to="/login">
             ¿Ya tienes cuenta? Inicia sesión
           </Link>
         </div>
