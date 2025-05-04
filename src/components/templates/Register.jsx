@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import LoginTemplate from "../templates/LoginTemplate.jsx"
 import { API_URL } from "../constants/env.js";
 
+
+
 const Register = () => {
   const nav = useNavigate();
 
@@ -20,12 +22,11 @@ const Register = () => {
     };
 
     axios
-      .post(`${API_URL}/public/register`, data)
+      .post(`${API_URL}/public/Users`, data)
       .then(() => { 
         nav('/login')
       })   
       .catch((err) => {
-        const errorMessage = err.response?.data?.errors?.[0] || err.message || "Error desconocido";
         setError(errorMessage);
         console.log(err);
       })
