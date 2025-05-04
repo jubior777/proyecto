@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import LoginTemplate from "../templates/LoginTemplate.jsx"
+import {LoginTemplate} from "../templates/LoginTemplate.jsx"
 import { API_URL } from "../constants/env.js";
 
 
@@ -23,12 +23,12 @@ const Register = () => {
     };
 
     axios
-      .post(`${API_URL}/public/login`, data)
+      .post(`${API_URL}/public/users`, data)
       .then(() => { 
-        nav('/login')
+        nav("/login");
       })   
       .catch((err) => {
-        setError(errorMessage);
+        setError(err);
         console.log(err);
       })
   };
@@ -67,7 +67,7 @@ const Register = () => {
         </div>
         {error && (
           <p className="text-center p-2 bg-red-100 text-red-800">
-            {error}
+            {error?.response?.data.errors[0]?.message}
           </p>
         )}
       </form>

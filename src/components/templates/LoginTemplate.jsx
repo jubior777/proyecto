@@ -1,6 +1,6 @@
 import React from "react";
 
-function LoginTemplate({ children, title }) {
+const LoginTemplate({ children, title }) {
     return (
         <section className="h-full gradient-form bg-gray-200 md:h-screen">
             <div className="container m-auto py-12 px-6 h-full">
@@ -18,7 +18,7 @@ function LoginTemplate({ children, title }) {
                                                 { title }
                                             </h4>
                                         </div>
-                                        { children }
+                                        {children}
                                     </div>
                                 </div>
                                 <div className="bg-gradient lg:w-6/12 flex items-center lg:rounded-r-lg lg:rounded-bl-none">
