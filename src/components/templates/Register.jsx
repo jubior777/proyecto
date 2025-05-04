@@ -7,6 +7,7 @@ import { API_URL } from "../constants/env.js";
 
 
 
+
 const Register = () => {
   const nav = useNavigate();
 
@@ -22,7 +23,7 @@ const Register = () => {
     };
 
     axios
-      .post(`${API_URL}/public/Users`, data)
+      .post(`${API_URL}/public/login`, data)
       .then(() => { 
         nav('/login')
       })   

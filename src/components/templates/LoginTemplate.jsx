@@ -15,15 +15,15 @@ function LoginTemplate({ children, title }) {
                                                 className="mx-auto w-48 mb-4 pt-4"
                                                 src="http://localhost:5173/trabajo.jpg" alt="logo" />
                                             <h4 className="text-xl font-semibold mt-1 mb-12 pb-1">
-                                                {title}
+                                                { title }
                                             </h4>
                                         </div>
-                                        {children}
+                                        { children }
                                     </div>
                                 </div>
                                 <div className="bg-gradient lg:w-6/12 flex items-center lg:rounded-r-lg lg:rounded-bl-none">
                                     <div className="text-white px-2  mx-6 md:p-12 md:mx-6">
-                                        <span>
+                                        <span className="text-4xl font-semibold mb-6">
                                             Mas que un artesania...
                                         </span>
                                         <h4 className="text-4xl">Somos una tienda de Artesania que hace la diferencia </h4>

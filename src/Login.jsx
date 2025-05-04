@@ -3,14 +3,14 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import LoginTemplate from "./components/templates/LoginTemplate.jsx";
 import { API_URL } from "./components/constants/env.js";
-
-
+import { setToken } from "./helpers/auth.js";
 
 
 const Login = () => {
   const nav = useNavigate();
 
   const [error, setError] = useState();
+
   const handleSubmit = (e) => {
     e.preventDefault(); // Evita el comportamiento por defecto del formulario
     setError()
@@ -21,8 +21,14 @@ const Login = () => {
 
     axios
       .post(`${API_URL}/public/login`, data)
-      .then(resp =>console.log(resp))
-      .catch(err => console.log(error))
+      .then((resp) => {
+        setToken(resp.data.data.token);
+        nav("/");  
+      })
+      .catch((err) => {
+        setError(err);
+        console.log(err);
+      })
       
   };
 
@@ -47,7 +53,7 @@ const Login = () => {
           <button className="bg-gradient w-full" type="submit" >
             Ingresar
           </button>
-          <Link className="text-gray-500" to="/Register">
+          <Link className="text-gray-500" to="/Registro">
             ¿Desea registrarse?
           </Link>
         </div>
