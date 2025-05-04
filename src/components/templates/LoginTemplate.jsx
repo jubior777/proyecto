@@ -1,6 +1,6 @@
 import React from "react";
 
-const LoginTemplate({ children, title }) {
+const LoginTemplate ({ children, title }) {
     return (
         <section className="h-full gradient-form bg-gray-200 md:h-screen">
             <div className="container m-auto py-12 px-6 h-full">

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import LoginTemplate from "./components/templates/LoginTemplate.jsx";
+import { LoginTemplate } from "./components/templates/LoginTemplate.jsx";
 import { API_URL } from "./components/constants/env.js";
 import { setToken } from "./helpers/auth.js";
 
