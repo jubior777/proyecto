@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { deleteToken } from "./../../helpers/auth";
+import { deleteToken, token } from "./../../helpers/auth";
 import { useNavigate } from "react-router-dom";
 
 const MainMenu = () => {
@@ -25,16 +25,21 @@ const MainMenu = () => {
                Productos
           </Link>
           </li>
-          <li className="flex items-center">
-          <Link className="menu-item" to="/login">
-               Iniciar sesión
-          </Link>
-          </li>
-          <li className="flex items-center">
+          {
+            !token() ? (
+              <li className="flex items-center">
+                <Link className="menu-item" to="/login">
+                  Iniciar sesión
+                </Link>
+              </li>
+            ) : (
+              <li className="flex items-center">
             <a onClick={handleSesion} className="menu-item cursor-pointer">
               Cerrar sesión
             </a>
           </li>
+            )
+          }
       </ul>
     </nav>
   );
