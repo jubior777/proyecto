@@ -4,7 +4,7 @@ import useFetch from "../hooks/useFetch.js"
 
 const Products = () => {  
 
-  const { data, error, loading } = useFetch("public/products")
+  const { data, error, loading } = useFetch("/public/products")
   console.log("Productos:", data);
    
   if (loading) return <h1>Cargando...</h1>
@@ -17,9 +17,7 @@ const Products = () => {
       {data && data.length > 0 ? (
         data.map(prod => (
           <div key={prod.id}>
-            <h3>{JSON.stringify(prod.product_name)}</h3>
-            <p>Precio: ${prod.price}</p>
-            <img src={prod.images[0]} alt={prod.product_name} width="150" />
+            {JSON.stringify(prod.product_name)}    
           </div>
         ))
       ) : (
