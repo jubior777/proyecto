@@ -1,5 +1,5 @@
 import React from "react"; // Importa React para usar JSX
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Form } from "react-router-dom";
 import App from "../App"; // Importa el componente principal de la aplicación
 import Error404 from "../components/Error404";
 import Products from "../components/Products";
@@ -32,6 +32,10 @@ const router = createBrowserRouter([
     {
         path: "/Registro",
         element: <Register />,
+    },
+    {
+        path: "/admin/productos/crear",
+        element: <Form />,
     },
 ])
 export default router; // Exporta el enrutador para usarlo en la aplicación
