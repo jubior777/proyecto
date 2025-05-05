@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import {LoginTemplate} from "../templates/LoginTemplate.jsx"
+import LoginTemplate from "../templates/LoginTemplate.jsx";
 import { API_URL } from "../constants/env.js";
 
 

@@ -34,10 +34,10 @@ const MainMenu = () => {
               </li>
             ) : (
               <li className="flex items-center">
-            <a onClick={handleSesion} className="menu-item cursor-pointer">
-              Cerrar sesión
-            </a>
-          </li>
+                 <a onClick={handleSesion} className="menu-item cursor-pointer">
+                 Cerrar sesión
+                </a>
+              </li>
             )
           }
       </ul>
