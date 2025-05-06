@@ -10,7 +10,7 @@ const Products = () => {
   if (loading) return <Loader />
 
   if (error) return <div>{error?.message}</div>
-
+ 
   return (
     <section className='py-16 max-w-256 m-auto'>
       <h1 className='text-3xl mb-6'>Explora nuestros productos</h1>
@@ -21,12 +21,6 @@ const Products = () => {
       </div>
     </section>
   )    
-  
 }
  
 export default Products
-
-  
-
-
-

@@ -34,6 +34,10 @@ const router = createBrowserRouter([
         element: <Register />,
     },
     {
+        path: "/admin/productos",
+        element: <Forms/>,
+    },
+    {
         path: "/admin/productos/crear",
         element: <Forms/>,
     },

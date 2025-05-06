@@ -4,9 +4,9 @@ import { API_URL } from '../components/constants/env';
 
 
 
-const useFetch = (endpoint, headers ={}) => {
-    const [data, setData] = useState(null)
-    const [error, setError] = useState(null)
+const useFetch = (endpoint, headers = {}) => {
+    const [data, setData] = useState()
+    const [error, setError] = useState()
     const [loading, setLoading] = useState(true)
     
     useEffect(() => {

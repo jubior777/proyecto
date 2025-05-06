@@ -6,22 +6,32 @@ const Loader = () => (
             <svg
                 width="90px"
                 height="90px"
-                viewBox="0 0 130 130"
+                viewBox="0 0 50 50"
                 version='1.1'
                 xmlns="http://www.w3.org/2000/svg"
                 xmlSpace='preserve'
-                className='spin'            
+                className='spin'
             >
-                <g transform='matrix(1,0,0,1,-377,-5)'>
-                    <g transform='matrix(0,457516,0,0,1,4,372,7,727777e-05'>
-                        <g transform='matrix(2,18575,0,0,0,714285,43,7145,14,2857)'>
-                            <path
-                                d='M48.421,80.74C37.827,80.092 27.682,73.612 22.75,64.142C18.173,55.354)'
-                                fill='#d4e3ef'
-                            />
-                        </g> 
-                    </g>
-                </g>
+                <circle
+                    cx="25"
+                    cy="25"
+                    r="20"
+                    fill="none"
+                    stroke="#d4e3ef"
+                    strokeWidth="5"
+                    strokeLinecap="round"
+                    strokeDasharray="31.4 31.4"
+                    transform="rotate(0 25 25)"
+                >
+                    <animateTransform
+                        attributeName="transform"
+                        type="rotate"
+                        from="0 25 25"
+                        to="360 25 25"
+                        dur="1s"
+                        repeatCount="indefinite"
+                    />
+                </circle>
             </svg>
         </section>
     </div>
