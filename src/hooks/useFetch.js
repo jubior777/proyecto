@@ -1,19 +1,24 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { API_URL } from '../components/constants/env';
 
+const useFetch = (endpoint, headers = {}, deps = []) => {
+    const [data, setData] = useState();
+    const [error, setError] = useState();
+    const [loading, setLoading] = useState(true);
+    const cancelTokenSource = useRef(null);
 
-
-const useFetch = (endpoint, headers = {}) => {
-    const [data, setData] = useState()
-    const [error, setError] = useState()
-    const [loading, setLoading] = useState(true)
-    
     useEffect(() => {
+        setLoading(true);
+        setError(undefined);
+        cancelTokenSource.current = axios.CancelToken.source();
+
         axios
-            .get(`${API_URL.replace(/\/$/, '')}/${endpoint.replace(/^\//, '')}`)
+            .get(API_URL.replace(/\/$/, '') + '/' + endpoint.replace(/^\//, ''), {
+                headers,
+                cancelToken: cancelTokenSource.current.token,
+            })
             .then((res) => {
-                console.log("Respuesta completa de la API:", res.data);
                 if (res.data && res.data.data) {
                     setData(res.data.data);
                 } else {
@@ -21,16 +26,24 @@ const useFetch = (endpoint, headers = {}) => {
                 }
             })
             .catch((err) => {
-                console.error("Error en la API:", err);
-                setError(err);
+                if (axios.isCancel(err)) {
+                    // Request cancelled, do nothing
+                } else {
+                    setError(err);
+                }
             })
             .finally(() => {
-                setLoading(false)
-            })
-    }, [])
-    
-    return {data, error, loading}
+                setLoading(false);
+            });
 
-}
+        return () => {
+            if (cancelTokenSource.current) {
+                cancelTokenSource.current.cancel('Request cancelled by cleanup');
+            }
+        };
+    }, deps);
+
+    return { data, error, loading };
+};
 
 export default useFetch;

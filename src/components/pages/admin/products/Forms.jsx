@@ -1,15 +1,34 @@
 import axios from 'axios';
 import { API_URL } from '../../../constants/env';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { token } from '../../../../helpers/auth';
+import Loader from '../../../atoms/Loaders';
 
 const Forms = () => {
     const nav = useNavigate();
     const params = useParams();
-
     const [hasDelivery, setHasDelivery] = useState(false);
     const [errors, setErrors] = useState();
+
+    const[product, setProduct] = useState()
+    const[error, setError] = useState()
+    const[loading, setLoading] = useState(false)
+
+    useEffect(() => {
+        if (params.id) {
+            setLoading(true)
+            axios.get(`${API_URL}/public/products/${params.id}`).then((resp) => {
+                setProduct(resp.data.data)
+            })
+            .catch((err) => {
+                setError(err.message)
+            }).finally(() => {
+                setLoading(false)
+            })
+          
+        }
+    },[])
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -28,7 +47,7 @@ const Forms = () => {
             category: e.target.categoria.value,
         };
 
-        if (params.productID) {
+        if (params.productI) {
             body.id = e.target.id.value;
         }
 
@@ -38,11 +57,11 @@ const Forms = () => {
             },
         };
 
-        if (!params.productID) {
+        if (!params.id) {
             axios
                 .post(`${API_URL.replace(/\/$/, '')}/admin/products`, body, config)
                 .then(() => {
-                    nav('/productos');
+                    nav('/admin/productos');
                 })
                 .catch((err) => {
                     if (err.response && err.response.data) {
@@ -53,9 +72,9 @@ const Forms = () => {
                 });
         } else {
             axios
-                .put(`${API_URL.replace(/\/$/, '')}/admin/products`, body, config)
+                .put(`${API_URL.replace(/\/$/, '')}/admin/products/${params.id}`, body, config)
                 .then(() => {
-                    nav('/productos');
+                    nav('/admin/productos');
                 })
                 .catch((err) => {
                     if (err.response && err.response.data) {
@@ -63,21 +82,24 @@ const Forms = () => {
                     } else {
                         setErrors(err.message);
                     }
-                });
+                })
+            
         }
     };
 
+    if (loading) return <Loader />;
+    
     return (
         <div className="pt-16 max-w-256 m-auto">
             <section className="pt-10">
                 <h1 className="text-4xl mb-6">
-                    {params.productID ? "Editar" : "Crear"} Producto
+                    {params.id ? "Editar" : "Crear"} producto
                 </h1>
                 <form onSubmit={handleSubmit}>
                     <div className="grid grid-cols-2 gap-6 mb-6">
                         <div className="col mb-4">
-                            <label htmlFor="productName">Nombre del Producto</label>
-                            <input type="text" id="productName" name="productName" required />
+                            <label htmlFor="productName">Nombre del producto</label>
+                            <input type="text" name="productName" defaultValue={product.id} required />
                         </div>
                         <div>
                             <label htmlFor="price">Precio</label>

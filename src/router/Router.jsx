@@ -7,6 +7,7 @@ import Home from "../components/templates/Home";
 import Login from "../Login";
 import Register from "../components/templates/Register"; // Importa el componente de registro
 import Forms from "../components/pages/admin/products/Forms";
+import Table from "../components/pages/admin/products/Table";
 
 const router = createBrowserRouter([
     { 
@@ -35,11 +36,16 @@ const router = createBrowserRouter([
     },
     {
         path: "/admin/productos",
-        element: <Forms/>,
+        element: <Table/>,
     },
     {
         path: "/admin/productos/crear",
         element: <Forms/>,
     },
+    {
+        path: "/admin/productos/editar/:id",
+        element: <Forms/>,
+    },
 ])
+
 export default router; // Exporta el enrutador para usarlo en la aplicación
