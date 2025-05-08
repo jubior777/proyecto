@@ -25,9 +25,6 @@ button,
 }
 
 /*Loader */
-.spin {
-  animation: EDrotation infinite 2s ease-out;
-}
 
 @keyframes EDrotation {
   to {

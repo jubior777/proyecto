@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import useFetch from '../../../../hooks/useFetch';
 import Loader from '../../../atoms/Loaders';
 import { Link } from 'react-router-dom';
@@ -8,12 +8,22 @@ import { token } from '../../../../helpers/auth';
 
 const ProductsTable = () => {  
 
+  console.log("ProductsTable component rendered");
+
   const [refresh, setRefresh] = useState(0);
   const [message, setMessage] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
-  const { data, loading, error  } = useFetch("/public/products", {}, [refresh]);
+
+  const memoizedHeaders = useMemo(() => ({}), []);
+  const memoizedDeps = useMemo(() => [refresh], [refresh]);
+
+  const { data, loading, error  } = useFetch("/public/products", memoizedHeaders, memoizedDeps);
+
+  console.log("useFetch data:", data, "loading:", loading, "error:", error);
+  console.log("refresh state:", refresh);
 
   const deleteProduct = (id) => {
+    console.log("deleteProduct called with id:", id);
     if (window.confirm("Estas seguro de eliminar el producto?")){
       axios
       .delete(`${API_URL}/admin/products/${id}`, {
@@ -22,12 +32,18 @@ const ProductsTable = () => {
         }
       })
       .then(() => {
+        console.log("Product deleted successfully");
         setMessage("Producto eliminado correctamente");
         setErrorMessage(null);
-        setRefresh(prev => prev + 1);
+        setRefresh(prev => {
+          const newRefresh = prev + 1;
+          console.log("refresh state updated to:", newRefresh);
+          return newRefresh;
+        });
         setTimeout(() => setMessage(null), 3000);
       })
-      .catch(() => {
+      .catch((err) => {
+        console.error("Error deleting product:", err);
         setErrorMessage("Error al eliminar el producto");
         setMessage(null);
         setTimeout(() => setErrorMessage(null), 3000);
@@ -35,9 +51,11 @@ const ProductsTable = () => {
     }
   };
 
-  if (loading) return <Loader/>
+
 
   if (error) return <div>{error?.message}</div>
+
+  if (loading) return <Loader />;
 
   return (
     <div className='max-w-256 m-auto'>
@@ -50,7 +68,7 @@ const ProductsTable = () => {
         </div>
         {message && <div className="text-green-600 mb-4">{message}</div>}
         {errorMessage && <div className="text-red-600 mb-4">{errorMessage}</div>}
-        <table className='overflow-x-scroll'>
+        <table >
           <thead>
             <tr className='bg-gradient -400 text-'>
               <th>Nombre</th>
