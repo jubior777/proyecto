@@ -10,7 +10,7 @@ const useFetch = (endpoint, headers = {}, deps = []) => {
   
     useEffect(() => {
         axios
-            .get(`${API_URL}/${endpoint}}`)
+            .get(`${API_URL}/${endpoint}`)
             .then((resp) => {
                 setData(resp.data.data);
             })

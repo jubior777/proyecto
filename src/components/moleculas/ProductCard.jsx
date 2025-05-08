@@ -4,14 +4,14 @@ import PropTypes from "prop-types";
 import { formatPrice } from "../../helpers/Number"
 
 const ProductCard = ({ product }) => {
-    const { images, product_name, id, price } = product
+    const { images, product_name, id_del_productos, price } = product
 
     const imageUrl = images && images.length > 0 ? images[0] : null;
 
     return (
         <article className="w-full max-w-sm bg-white border rounded-lg shadow-lg p-5">
             <div className="mb-5 rounded-lg overflow-hidden">
-                <Link to={`/productos/${id}`}>
+                <Link to={`/productos/${id_del_productos}`}>
                     {imageUrl ? (
                         <img
                             className="align-middle h-40 w-full object-cover"
@@ -26,7 +26,7 @@ const ProductCard = ({ product }) => {
                 </Link>
             </div>
             <div className="mb-6">
-                <Link to={`/productos/${id}`}>
+                <Link to={`/productos/${id_del_productos}`}>
                     <h3 className="text-xl font-semibold tracking-tight text-gray-900 m-2">
                         {product_name}
                     </h3>
