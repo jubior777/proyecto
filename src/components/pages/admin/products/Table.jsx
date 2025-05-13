@@ -4,6 +4,7 @@ import Loader from '../../../atoms/Loaders';
 import useFetch from '../../../../hooks/useFetch';
 import { token } from '../../../../helpers/auth';
 import axios from 'axios';
+import { API_URL } from '../../../constants/env';
 
 const Table = () => {
   const { data, loading, error } = useFetch('public/products');
@@ -26,42 +27,52 @@ const Table = () => {
     .catch((err) => {
       console.error('Error deleting product:', err);
     });
-  };
+  }
 
   if (loading) return <Loader />;
   if (error) return <div>{error?.message}</div>;
 
   return (
-    <table className="overflow-x-scroll">
-      <thead>
-        <tr className="bg-gradient-400 text-white">
-          <th>Nombre</th>
-          <th className="px-10">Precio</th>
-          <th className="px-10">Editar</th>
-          <th className="px-10">Borrar</th>
-        </tr>
-      </thead>
-      <tbody>
-        {products?.map((product) => (
-        <tr key={product.id}>
-          <td>{product.name}</td> {/* Cambié product_name por name */}
-            <td className="px-10">{product.price}</td>
-              <td className="px-10">
-                <Link to={`/admin/productos/editar/${product.id}`}>Editar</Link>
-              </td>
-              <td className="px-6">
-                  <button 
-                    onClick={() => deleteProduct(product.id)} 
+    <div className="max-w-256 m-auto">
+      <section className="pt-10">
+        <h1 className="text-4xl mb-6">Productos</h1>
+        <div className="pt-1 mb-12 pb-1">
+          <Link className="bg-gradient button" to="/admin/productos/crear">
+            Agregar producto
+          </Link>
+        </div>
+        <table className="overflow-x-scroll">
+          <thead>
+            <tr className="bg-gradient-400 text-white">
+              <th>Nombre</th>
+              <th className="px-10">Precio</th>
+              <th className="px-10">Editar</th>
+              <th className="px-10">Borrar</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((product) => (
+              <tr key={product.id}>
+                <td>{product.product_name}</td>
+                <td className="px-10">{product.price}</td>
+                <td className="px-10">
+                  <Link to={`/admin/productos/editar/${product.id}`}>Editar</Link>
+                </td>
+                <td className="px-6">
+                  <a
                     className="text-red-600 hover:cursor-pointer"
+                    onClick={() => deleteProduct(product.id)}
                   >
                     Eliminar
-                  </button>
+                  </a>
                 </td>
               </tr>
             ))}
-      </tbody>
-    </table>
+          </tbody>
+        </table>
+      </section>
+    </div>
   );
-}
+};
 
 export default Table;
