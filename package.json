@@ -24,10 +24,11 @@
   "dependencies": {
     "amqplib": "^0.10.7",
     "axios": "^1.9.0",
-    "react": "^19.0.0",
+    "react": "^19.1.0",
     "react-devtools": "^1.0.5",
-    "react-dom": "^19.0.0",
-    "react-router-dom": "^7.5.3"
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.5.3",
+    "semver": "^7.7.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",

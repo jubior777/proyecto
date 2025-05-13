@@ -47,4 +47,14 @@ td {
  tr:nth-child(even) {
   @apply bg-gray-100;
 }
+/* Loader*/
+.spin{
+  animation: EDrotation 1s linear infinite;
+}
+
+@keyframes EDrotation {
+  to {
+    transform: rotate(2turn);
+  }
+}
 
