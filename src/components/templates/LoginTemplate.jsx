@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const LoginTemplate = ({ children, title }) =>{
     return (
@@ -21,12 +22,12 @@ const LoginTemplate = ({ children, title }) =>{
                                         {children}
                                     </div>
                                 </div>
-                                <div className="bg-gradient lg:w-6/12 flex items-center lg:rounded-r-lg lg:rounded-bl-none">
+                                <div className="bg-green-500 lg:w-6/12 flex items-center lg:rounded-r-lg lg:rounded-bl-none">
                                     <div className="text-white px-2  mx-6 md:p-12 md:mx-6">
                                         <span className="text-4xl font-semibold mb-6">
                                             Mas que un artesania...
                                         </span>
-                                        <h4 className="text-4xl">Somos una tienda de Artesania que hace la diferencia </h4>
+                                        <h4 className="text-4xl">Somos una tienda que hace la diferencia. </h4>
                                     </div>
                                 </div>
                             </div>
@@ -37,5 +38,9 @@ const LoginTemplate = ({ children, title }) =>{
         </section>
     )
 }
+LoginTemplate.propTypes = {
+    children: PropTypes.node.isRequired,
+    title: PropTypes.string.isRequired,
+};
 
 export default LoginTemplate;

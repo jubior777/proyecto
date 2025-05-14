@@ -2,10 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { deleteToken, token } from "./../../helpers/auth";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "./UserContext";
 
 const MainMenu = () => {
-
   const nav = useNavigate()
+  const { userData, setUserData } = useContext(UserContext)
 
   const handleSesion = () => {
     deleteToken()
@@ -33,14 +35,22 @@ const MainMenu = () => {
                 </Link>
               </li>
             ) : (
-              <li className="flex items-center">
-                 <a onClick={handleSesion} className="menu-item cursor-pointer">
-                 Cerrar sesión
-                </a>
-              </li>
+              <>
+                <li className="flex items-center">
+                  <Link className="menu-item" to="/admin/productos">
+                    Administrador
+                  </Link>
+                </li>
+                <li className="flex items-center">
+                  <a onClick={handleSesion} className="menu-item cursor-pointer">
+                  Cerrar sesión
+                  </a>
+                </li>
+              </>
             )
           }
       </ul>
+      {JSON.stringify(userData)}
     </nav>
   );
 };

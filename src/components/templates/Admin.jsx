@@ -1,13 +1,13 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import MainHeader from "../pages/MainHeader";
-import MainMenu from "../moleculas/MainMenu";
+import AdminMenu from "../moleculas/AdminMenu";
 
-const Home = () => {        
+const Admin = () => {        
     return (
       <div >
         <MainHeader>
-          <MainMenu/>
+            <AdminMenu/>
         </MainHeader>
         <div className="pt-16 max-w-256 m-auto">
           <Outlet/>
@@ -16,4 +16,4 @@ const Home = () => {
     );
   }
   
-  export default Home;
+  export default Admin;
